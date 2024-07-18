@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { PokemonCard } from "../components/pokemon/PokemonCard";
 import { PokeSearch } from "../components/pokemon/PokeSearch";
 import '../styles/PokedexRoot.css';
+import { PokemonListRequest, Result } from '../classes/PokemonListRequest';
 
 const PokedexRoot = () => {
   const [searchString, setSearchString] = useState("")
@@ -21,17 +22,14 @@ const PokedexRoot = () => {
   function fetchAllPokemon() {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=1500`;
     fetch(url)
-      .then(res => res.json())
+      .then(res => res.json() as PokemonListRequest)
       .then(res => res.results)
       // .then(rawList => rawList.map((p: any) => {
       //   const id = p.url.match(/\/v2\/pokemon\/(\d+)\//)[1]
       //   return { ...p, id: +id }
       // }))
-      .then(rawList => rawList.map((p: any) => ({ ...p, id: +p.url.match(/\/v2\/pokemon\/(\d+)\//)[1] })))
+      .then(rawList => rawList!.map((p: Result) => ({ ...p, id: +p.url.match(/\/v2\/pokemon\/(\d+)\//)[1] })))
       .then(allThePokemons => setPokemon(allThePokemons))
-    //     .then(function anonymous(allThePokemons) {
-    //       setPokemon(allThePokemons)
-    // })
   }
 }
 
