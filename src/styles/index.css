@@ -1,0 +1,10 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --dark-primary: #0F044C;
+  --dark-2: #141E61;
+  --light-2: #d1d3eb;
+  --light-primary: #eee;
+
+  color: var(--dark-primary);
+  background-color: var(--light-primary);
+}

@@ -1,0 +1,13 @@
+.PokemonCard {
+  display: inline;
+  background-color: #ff2222;
+  box-shadow: 3px 3px 3px grey;
+  margin: 10px;
+
+  & a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+  }
+}
