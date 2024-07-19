@@ -2,7 +2,9 @@ import { About, Contact, FourOhFour } from "./pages/OtherPages";
 import PokedexRoot from "./pages/PokedexRoot";
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { PokemonPage } from "./pages/PokemonPage";
+import { useSelector } from "react-redux";
 function App() {
+  const selectedPokemon = useSelector(s => s.selectedPokemon)
   return (
     <>
       <header>
@@ -11,7 +13,7 @@ function App() {
           <NavLink to="/about">About us</NavLink>
           <NavLink to="/contact">Contact us</NavLink>
         </nav>
-        <p>Current pokemon is </p>
+        <p>Current pokemon is {selectedPokemon?.name}</p>
       </header>
 
       <Routes>

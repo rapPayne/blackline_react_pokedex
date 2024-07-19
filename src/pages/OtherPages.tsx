@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux"
 
-export const About = () => (
-  <>
-    <h1>About us</h1>
-    <p>Current pokemon: </p>
-  </>)
+export const About = () => {
+  const selectedPokemon = useSelector(s => s.selectedPokemon)
+  return (
+    <>
+      <h1>About us</h1>
+      <p>Current pokemon: {selectedPokemon?.name} </p>
+    </>)
+}
 
 export const Contact = () => (
   <>
