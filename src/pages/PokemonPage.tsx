@@ -6,10 +6,9 @@ import { useFetchPokemon } from "../hooks/useFetchPokemon";
 
 export const PokemonPage = () => {
   const { name } = useParams();
-  //const [pokemon, setPokemon] = useState<Pokemon>({});
   const { fetchOnePokemon, pokemon, fetching } = useFetchPokemon();
   useEffect(() => {
-    fetchOnePokemon(name)
+    name && fetchOnePokemon(name)
   }, [name])
 
   useEffect(() => {
