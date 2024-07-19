@@ -23,6 +23,13 @@ export const PokemonPage = () => {
   return (
     <>
       <h1>Pokemon Page for {name}</h1>
+      <p>Type: {type}</p>
+      <p>HP: {hitPoints}</p>
+      <p>Attack: {attack}</p>
+      <p>Defense: {defense}</p>
+      <p>Special Attack: {specialAttack}</p>
+      <p>Special Defense: {specialDefense}</p>
+      <p>Speed: {speed}</p>
       <p>Base experience: {baseExperience}</p>
       <p>Weight: {weight}</p>
     </>
