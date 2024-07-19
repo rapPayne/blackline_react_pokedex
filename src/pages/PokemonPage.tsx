@@ -16,12 +16,11 @@ export const PokemonPage = () => {
 
   useEffect(() => {
     return () => {
-      console.warn("PokemonPage is  being disposed of. Cleanup here.")
+      // console.warn("PokemonPage is  being disposed of. Cleanup here.")
     }
   }, [])
 
   const { stats, types, baseExperience, sprites, weight } = pokemon;
-  //const back_default = sprites["back_default"]
 
   function showImages(sprites: unknown) {
     const images = [];
@@ -53,7 +52,7 @@ export const PokemonPage = () => {
   );
   return (
     <>
-      <pre>{JSON.stringify(pokemon.sprites, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(pokemon.sprites, null, 2)}</pre> */}
       <h1>Pokemon Page for {name}</h1>
       <section className="fullWidth">
         <section className="left">
