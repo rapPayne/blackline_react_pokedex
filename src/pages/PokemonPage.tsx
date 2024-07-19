@@ -22,9 +22,9 @@ export const PokemonPage = () => {
 
   const { stats, types, baseExperience, sprites, weight } = pokemon;
 
-  function showImages(sprites: unknown) {
+  function showImages(sprites: object) {
     const images = [];
-    for (let key in sprites) {
+    for (const key in sprites) {
       if (typeof sprites[key] === "string")
         images.push({ label: key, imgSrc: sprites[key] })
       console.log(images)
@@ -40,7 +40,7 @@ export const PokemonPage = () => {
       </>
     )
   }
-  const showSprites = (sprites) => Object.entries(sprites).map((pi, i) => {
+  const showSprites = (sprites: object) => Object.entries(sprites).map((pi, i) => {
     if (typeof pi[1] === "string")
       return (
         <figure key={i}>
