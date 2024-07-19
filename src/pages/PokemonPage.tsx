@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Pokemon } from "../classes/PokemonRequest";
+import { useEffect } from "react";
 import '../styles/PokemonPage.css'
 import { useFetchPokemon } from "../hooks/useFetchPokemon";
 
@@ -9,7 +8,7 @@ export const PokemonPage = () => {
   const { fetchOnePokemon, pokemon, fetching } = useFetchPokemon();
   useEffect(() => {
     name && fetchOnePokemon(name)
-  }, [name])
+  }, [name, fetchOnePokemon])
 
   useEffect(() => {
     return () => {
@@ -18,6 +17,8 @@ export const PokemonPage = () => {
   }, [])
 
   const { stats, types, baseExperience, sprites, weight } = pokemon;
+
+  console.log(sprites)
 
   const showSprites = (sprites: object) => Object.entries(sprites).map((pi, i) => {
     if (typeof pi[1] === "string")
@@ -64,7 +65,7 @@ export const PokemonPage = () => {
   )
 }
 
-function getColorForType(typeName) {
+function getColorForType(typeName: string) {
   const typeColors = {
     fire: 'red',
     water: 'blue',

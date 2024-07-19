@@ -1,6 +1,16 @@
 
-export const About = () => <h1>About us</h1>
-export const Contact = () => <h1>Contact us</h1>
+export const About = () => (
+  <>
+    <h1>About us</h1>
+    <p>Current pokemon: </p>
+  </>)
+
+export const Contact = () => (
+  <>
+    <h1>Contact us</h1>
+    <p>Current pokemon: </p>
+  </>)
+
 export const FourOhFour = () => (
   <>
     <h1>Oh no!</h1>
@@ -10,5 +20,6 @@ export const FourOhFour = () => (
       <li><a href="/about">About us</a></li>
       <li><a href="/contact">Contact us</a></li>
     </ul>
+    <p>Current pokemon: </p>
   </>
 )

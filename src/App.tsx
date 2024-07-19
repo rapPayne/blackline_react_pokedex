@@ -11,6 +11,7 @@ function App() {
           <NavLink to="/about">About us</NavLink>
           <NavLink to="/contact">Contact us</NavLink>
         </nav>
+        <p>Current pokemon is </p>
       </header>
 
       <Routes>
