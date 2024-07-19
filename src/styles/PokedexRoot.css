@@ -1,4 +1,5 @@
 .PokedexRoot {
+
   & #listWrapper {
     display: flex;
     flex-wrap: wrap;

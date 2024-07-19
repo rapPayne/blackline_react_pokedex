@@ -1,0 +1,17 @@
+& .fullWidth {
+  display: flex;
+  flex-direction: row;
+}
+
+& .left {
+  flex-basis: 90vw;
+  flex-shrink: 1;
+  flex-grow: 1;
+  background-color: bisque;
+}
+
+& .infoBox {
+  flex-basis: 500px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
