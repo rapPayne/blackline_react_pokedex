@@ -19,19 +19,39 @@ export const PokemonPage = () => {
     }
   }, [])
 
-  const { baseExperience, weight } = pokemon;
+  const { stats, types, baseExperience, weight } = pokemon;
   return (
     <>
       <h1>Pokemon Page for {name}</h1>
-      <p>Type: {type}</p>
-      <p>HP: {hitPoints}</p>
-      <p>Attack: {attack}</p>
-      <p>Defense: {defense}</p>
-      <p>Special Attack: {specialAttack}</p>
-      <p>Special Defense: {specialDefense}</p>
-      <p>Speed: {speed}</p>
+      <p>Types: </p>
+      <ul>
+      {types?.map((type, index) => (
+        <li key={index} style={{ color: getColorForType(type.type?.name) }}>
+          {type.type?.name}
+          </li>
+      ))}
+      </ul>
+      <p>Stats: </p>
+      <ul>
+      {stats?.map((stat, index) => (
+        <li key={index}>{stat.stat?.name}: {stat.baseStat}</li>
+      ))}
+      </ul>
       <p>Base experience: {baseExperience}</p>
       <p>Weight: {weight}</p>
     </>
   )
+}
+
+function getColorForType(typeName) {
+  const typeColors = {
+    fire: 'red',
+    water: 'blue',
+    grass: 'green',
+    electric: 'yellow',
+    psychic: 'pink',
+    poison: 'purple',
+    // Add more types and colors as needed
+  };
+  return typeColors[typeName] || 'gray'; // Default color if type not found
 }
