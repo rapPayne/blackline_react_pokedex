@@ -2,16 +2,14 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Pokemon } from "../classes/PokemonRequest";
 import '../styles/PokemonPage.css'
+import { useFetchPokemon } from "../hooks/useFetchPokemon";
 
 export const PokemonPage = () => {
   const { name } = useParams();
-  const [pokemon, setPokemon] = useState<Pokemon>({});
-
+  //const [pokemon, setPokemon] = useState<Pokemon>({});
+  const { fetchOnePokemon, pokemon, fetching } = useFetchPokemon();
   useEffect(() => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
-    fetch(url)
-      .then(res => res.json() as Pokemon)
-      .then(p => setPokemon(p))
+    fetchOnePokemon(name)
   }, [name])
 
   useEffect(() => {
@@ -22,24 +20,6 @@ export const PokemonPage = () => {
 
   const { stats, types, baseExperience, sprites, weight } = pokemon;
 
-  function showImages(sprites: object) {
-    const images = [];
-    for (const key in sprites) {
-      if (typeof sprites[key] === "string")
-        images.push({ label: key, imgSrc: sprites[key] })
-      console.log(images)
-    }
-    return (
-      <>
-        {images.map((pi, i) => (
-          <figure key={i}>
-            <img src={pi.imgSrc} />
-            <figcaption>{pi.label}</figcaption>
-          </figure>
-        ))}
-      </>
-    )
-  }
   const showSprites = (sprites: object) => Object.entries(sprites).map((pi, i) => {
     if (typeof pi[1] === "string")
       return (
@@ -51,7 +31,9 @@ export const PokemonPage = () => {
   }
   );
   return (
-    <>
+    <>{fetching ?
+      <h1>LOADING, PLEASE WAIT</h1> : null
+    }
       {/* <pre>{JSON.stringify(pokemon.sprites, null, 2)}</pre> */}
       <h1>Pokemon Page for {name}</h1>
       <section className="fullWidth">
