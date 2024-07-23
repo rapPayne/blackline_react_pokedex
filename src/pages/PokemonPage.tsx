@@ -8,8 +8,9 @@ export const PokemonPage = () => {
 	const { name } = useParams();
 	const { fetchOnePokemon, pokemon, fetching } = useFetchPokemon();
 	useEffect(() => {
-		name && fetchOnePokemon(name);
-	}, [name]);
+    name && fetchOnePokemon(name)
+  }, [name, fetchOnePokemon])
+
 
 	useEffect(() => {
 		return () => {
@@ -76,4 +77,5 @@ function getColorForType(typeName) {
 		// Add more types and colors as needed
 	};
 	return typeColors[typeName] || "gray"; // Default color if type not found
+
 }
